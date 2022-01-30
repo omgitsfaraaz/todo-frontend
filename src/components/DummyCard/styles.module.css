@@ -1,0 +1,29 @@
+.mainDiv {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 1px 6px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 6px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 6px 5px 0px rgba(0,0,0,0.75);
+    margin-bottom: 10px;
+}
+
+.taskTitle {
+    display: inline;
+    position: relative;
+    left: 10px;
+}
+
+@media screen and (min-width: 1200px) {
+    .mainDiv {
+        padding: 20px;
+        border-radius: 20px;
+        background-color: white;
+        box-shadow: 1px 6px 5px 0px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 1px 6px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 1px 6px 5px 0px rgba(0,0,0,0.75);
+        margin-bottom: 10px;
+        min-width: 300px;
+        margin-left: 10px;
+    }
+  }
