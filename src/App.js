@@ -6,7 +6,8 @@ import TaskCard from "./components/TaskCard/TaskCard";
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 // Actions
-import { todosProvider } from "./redux/actions";
+import { createTodoModal, todosProvider } from "./redux/actions";
+import CreateTodo from "./components/CreateTodo/CreateTodo";
 
 function App() {
 
@@ -17,15 +18,16 @@ function App() {
   const dispatch = useDispatch();
   const { todos, loading } = useSelector(state => state.getTodos);
   const { loading: delTodoLoad } = useSelector(state => state.deleteTodo);
+  const { showModal, loading: createTodoLoad } = useSelector(state => state.createTodo);
 
   // useEffects
   useEffect(() => {
     dispatch(todosProvider())
-  }, [delTodoLoad]);
+  }, [delTodoLoad, createTodoLoad]);
 
   return (
     <div className={styles.mainDiv}>
-      <div className={styles.addTodo}>
+      <div className={styles.addTodo} onClick={() => dispatch(createTodoModal(true))}>
         <span className={styles.plus}>+</span>
       </div>
       <h1 className={styles.mainHead}>Welcome to Tasks!</h1>
@@ -52,6 +54,12 @@ function App() {
           </div>
         )}
       </div>
+
+      {
+        showModal
+        ? <CreateTodo />
+        : <div />
+      }
     </div>
   );
 }

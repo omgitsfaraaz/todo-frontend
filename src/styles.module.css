@@ -26,6 +26,10 @@
     text-align: center;
     display: flex;
     justify-content: center;
+    cursor: pointer;
+    box-shadow: 3px 2px 21px -8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 3px 2px 21px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 2px 21px -8px rgba(0,0,0,0.75);
 }
 
 .plus {
