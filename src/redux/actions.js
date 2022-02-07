@@ -7,9 +7,15 @@ import {
     DELETE_TODO_FAILURE,
     DELETE_TODO_LOADING,
     DELETE_TODO_SUCCESS,
+    EDIT_TODO_FAILURE,
+    EDIT_TODO_LOADING,
+    EDIT_TODO_MODAL,
+    EDIT_TODO_SUCCESS,
     GET_TODOS_FAILURE, 
     GET_TODOS_LOADING, 
-    GET_TODOS_SUCCESS 
+    GET_TODOS_SUCCESS, 
+    STORE_TODO_ID, 
+    STORE_TODO_TITLE
 } from "./actionTypes"
 
 const devUrl = "http://localhost:3001";
@@ -143,6 +149,69 @@ export const createTodoProvider = (data) => {
       })
       .catch(err => {
         dispatch(createTodoFailure(err));
+      })
+  }
+}
+
+// EDIT TODOS
+const editTodoLoading = () => {
+  return {
+    type: EDIT_TODO_LOADING
+  }
+}
+
+const editTodoSuccess = (data) => {
+  return {
+    type: EDIT_TODO_SUCCESS,
+    payload: data
+  }
+}
+
+const editTodoFailure = (error) => {
+  return {
+    type: EDIT_TODO_FAILURE,
+    payload: error
+  }
+}
+
+export const editTodoModal = data => {
+  return {
+    type: EDIT_TODO_MODAL,
+    payload: data
+  }
+}
+
+export const storeTitle = data => {
+  return {
+    type: STORE_TODO_TITLE,
+    payload: data
+  }
+}
+
+export const storeTodoId = data => {
+  return {
+    type: STORE_TODO_ID,
+    payload: data
+  }
+}
+
+export const editTodoProvider = (todoId, data) => {
+  return (dispatch) => {
+    dispatch(editTodoLoading())
+    const config = {
+      method: "patch",
+      url: `${devUrl}/api/todos/${todoId}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data
+    };
+    axios(config)
+      .then(response => {
+        dispatch(editTodoSuccess(response.data.data.todo));
+      })
+      .catch(err => {
+        dispatch(editTodoFailure(err));
       })
   }
 }

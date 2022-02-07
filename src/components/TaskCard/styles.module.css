@@ -20,6 +20,16 @@
     width: 70%;
 }
 
+.taskComplete {
+    /* display: inline;
+    position: relative;
+    left: 10px; */
+    text-align: left;
+    /* background-color: red; */
+    width: 70%;
+    text-decoration: line-through;
+}
+
 .delete {
     /* position: absolute; */
     /* background-color: blue; */
